@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+    let playerInput = prompt("Choice: ", "rock, paper, or scissors");
+    let player = playerInput.toLowerCase().trim();
+
+    function computerPlay() {
+        let randNum = Math.ceil(Math.random() * 3);
+        let comp = "";
+
+        if(randNum == 1){comp = "rock";}
+        if(randNum == 2){comp = "paper";}
+        if(randNum == 3){comp = "scissors";}
+        return comp;
+    }
+
+    function playRound(playerSelection, computerSelection){
+        let message = "";
+        let playerCounter = 0;
+        let compCounter = 0;
+        
+
+        if(playerSelection === computerSelection){
+            message = "It's a draw!"
+        }
+        else if(playerSelection === "rock" && computerSelection === "paper"){
+            message = "You lose! Paper beats Rock!"
+            compCounter++;
+        }
+        else if(playerSelection === "rock" && computerSelection === "scissors"){
+            message = "You Win! Rock crushes Scissors!"
+            playerCounter++; 
+        } 
+        else if(playerSelection === "paper" && computerSelection === "scissors"){
+            message = "You Lose! Scissors cuts Paper!"
+            compCounter++;
+        } 
+        else if(playerSelection === "paper" && computerSelection === "rock"){
+            message = "You Win! Paper covers Rock!"
+            playerCounter++; 
+        } 
+        else if(playerSelection === "scissors" && computerSelection === "rock"){
+            message = "You Lose! Rock crushes Scissors!"
+            compCounter++;
+        } 
+        else if(playerSelection === "scissors" && computerSelection === "paper"){
+            message = "You Win! Scissors cuts Paper!"
+            playerCounter++; 
+        } 
+        console.log(message);
+
+        if(playerCounter > compCounter){
+            youWin = `You win ${playerCounter} games to ${compCounter}`;
+        }
+        else{
+            youWin = `Computer wins ${compCounter} games to ${playerCounter}`;
+        }
+        return youWin;
+    }
+
+    
+    playRound(player, computerPlay());
+
+    
+    
+    console.log(youWin);
+
+</script>
+</html>
